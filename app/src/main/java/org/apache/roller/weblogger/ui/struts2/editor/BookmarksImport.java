@@ -159,6 +159,10 @@ public final class BookmarksImport extends UIAction {
     }
     
     public void setOpmlFileFileName(String opmlFileFileName) {
+        // Validate that the file name does not contain directory traversal characters
+        if (opmlFileFileName != null && (opmlFileFileName.contains("..") || opmlFileFileName.contains("/") || opmlFileFileName.contains("\\"))) {
+            throw new IllegalArgumentException("Invalid file name");
+        }
         this.opmlFileFileName = opmlFileFileName;
     }
     
