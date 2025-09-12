@@ -54,6 +54,10 @@ public final class MediacastUtil {
         
         MediacastResource resource = null;
         try {
+            String authorizedPrefix = "http://trusted.example.com/";
+            if (!url.startsWith(authorizedPrefix)) {
+                throw new MediacastException(BAD_URL, "URL is not authorized: " + url);
+            }
             HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
             con.setRequestMethod("HEAD");
             int response = con.getResponseCode();
