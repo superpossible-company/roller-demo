@@ -143,6 +143,10 @@ public final class BookmarksImport extends UIAction {
     }
     
     public void setOpmlFile(File opmlFile) {
+        String fileName = opmlFile.getName();
+        if (fileName.contains("..") || fileName.contains("/") || fileName.contains("\\")) {
+            throw new IllegalArgumentException("Invalid file path");
+        }
         this.opmlFile = opmlFile;
     }
     
