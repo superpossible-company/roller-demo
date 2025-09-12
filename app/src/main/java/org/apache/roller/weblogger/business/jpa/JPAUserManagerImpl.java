@@ -203,7 +203,7 @@ public class JPAUserManagerImpl implements UserManager {
 
         // add mapping to cache
         if(user != null) {
-            log.debug("userNameToIdMap CACHE MISS - " + userName);
+            log.debug("userNameToIdMap CACHE MISS");
             this.userNameToIdMap.put(user.getUserName(), user.getId());
         }
 
